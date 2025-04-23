@@ -21,15 +21,6 @@
 
 ---
 
-## 🔗 Team Project Repository
-
-This is our official GitHub repository for the ICS344 Course Project:  
-**[ICS344-CourseProject](https://github.com/A0-2H/ICS344-CourseProject)**
-
-It contains all deliverables for the three required phases, including scripts, screenshots, and documentation.
-
----
-
 ## 📁 Repository Structure
 
 ```
