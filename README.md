@@ -28,7 +28,11 @@ ICS344-CourseProject/
 ├── phase1/
 │   ├── screenshots/
 │   ├── smb_vuln_check.py
-│   └── README.md
+│   ├── custom/
+│   │   ├── custom.sh
+│   │   ├── lightpeas.sh
+│   │   └── README.md         
+│   └── README.md             
 ├── phase2/
 │   ├── screenshots/
 │   └── README.md
