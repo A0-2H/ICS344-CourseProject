@@ -29,10 +29,11 @@ ICS344-CourseProject/
 │   ├── screenshots/
 │   ├── smb_vuln_check.py
 │   ├── custom/
-│   │   ├── custom.sh
+│   │   ├── ExploitRoot.c
+│   │   ├── escalate.sh
 │   │   ├── lightpeas.sh
-│   │   └── README.md         
-│   └── README.md             
+│   │   └── README.md
+│   └── README.md
 ├── phase2/
 │   ├── screenshots/
 │   └── README.md
