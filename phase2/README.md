@@ -120,7 +120,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 
 ### 3.1 Access Search & Reporting
 
-- Open Splunk → Search & Reporting App.
+- Open Splunk → Search & Reporting.
 
 **Screenshot:**
 - ![17-splunk-search-homepage.png](./screenshots/17-splunk-search-homepage.png)
