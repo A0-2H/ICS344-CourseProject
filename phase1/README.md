@@ -40,8 +40,9 @@
 
 ---
 
-### 1.4 Confirm Network Connectivity
+### 1.4 Obtain Attacker IP Address & Confirm Network Connectivity
 
+- Attacker (Kali) IP: `10.0.2.6`
 - Pinged victim from attacker:
 ```bash
 ping 10.0.2.15
