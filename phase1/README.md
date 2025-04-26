@@ -89,7 +89,7 @@ use 0
 
 **Screenshot:**
 - ![12-search_modcopy_exploit.png](./screenshots/12-search-mod_copy-exploit.png)
-- ![13-select-mod_copy-exploit.png](./screenshots/113-select-mod_copy-exploit.png)
+- ![13-select-mod_copy-exploit.png](./screenshots/13-select-mod_copy-exploit.png)
 
 ---
 
