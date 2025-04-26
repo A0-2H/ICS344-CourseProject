@@ -90,6 +90,7 @@ sudo /opt/splunkforwarder/bin/splunk start --accept-license
 
 **Screenshot:**
 - ![13-start-forwarder-first-time.png](./screenshots/13-start-forwarder-first-time.png)
+- ![14-forwarder-ready-status.png](./screenshots/14-forwarder-ready-status.png)
 
 ---
 
@@ -100,7 +101,7 @@ sudo /opt/splunkforwarder/bin/splunk add forward-server 10.0.2.6:9997
 ```
 
 **Screenshot:**
-- ![14-forwarder-ready-status.png](./screenshots/14-forwarder-ready-status.png)
+- ![15-add-forward-server.png](./screenshots/15-add-forward-server.png)
 
 ---
 
@@ -111,7 +112,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 ```
 
 **Screenshot:**
-- ![15-add-forward-server.png](./screenshots/15-add-forward-server.png)
+- ![16-add-monitor-bootlog.png](./screenshots/16-add-monitor-bootlog.png)
 
 ---
 
@@ -122,7 +123,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 - Open Splunk → Search & Reporting App.
 
 **Screenshot:**
-- ![16-add-monitor-bootlog.png](./screenshots/16-add-monitor-bootlog.png)
+- ![17-splunk-search-homepage.png](./screenshots/17-splunk-search-homepage.png)
 
 ---
 
@@ -131,7 +132,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 - Navigate to Data Summary → Hosts.
 
 **Screenshot:**
-- ![17-splunk-search-homepage.png](./screenshots/17-splunk-search-homepage.png)
+- ![18-splunk-new-search-page.png](./screenshots/18-splunk-new-search-page.png)
 
 ---
 
@@ -140,7 +141,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 - Confirmed that `kali` host appears.
 
 **Screenshot:**
-- ![18-splunk-new-search-page.png](./screenshots/18-splunk-new-search-page.png)
+- ![19-data-summary-hosts.png](./screenshots/19-data-summary-hosts.png)
 
 ---
 
@@ -149,7 +150,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 - View forwarded logs from `/var/log/boot.log`.
 
 **Screenshot:**
-- ![19-data-summary-hosts.png](./screenshots/19-data-summary-hosts.png)
+- ![20-host-kali-log-list.png](./screenshots/20-host-kali-log-list.png)
 
 ---
 
@@ -162,7 +163,7 @@ host=kali
 - Searched logs from the victim machine.
 
 **Screenshot:**
-- ![20-host-kali-log-list.png](./screenshots/20-host-kali-log-list.png)
+- ![21-log-event-details.png](./screenshots/21-log-event-details.png)
 
 ---
 
