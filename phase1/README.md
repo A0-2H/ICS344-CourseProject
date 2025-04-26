@@ -76,7 +76,7 @@ sudo msfconsole
 ```
 
 **Screenshot:**
-- ![11-start_msfconsole.png](./screenshots/11-start_msfconsole.png)
+- ![11-start_msfconsole.png](./screenshots/11-launch-msfconsole.png)
 
 ---
 
