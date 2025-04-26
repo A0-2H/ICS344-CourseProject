@@ -151,27 +151,6 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 
 **Screenshot:**
 - ![20-host-kali-log-list.png](./screenshots/20-host-kali-log-list.png)
-
----
-
-### 3.5 Search and View Boot Logs
-
-```bash
-host=kali
-```
-
-- Searched logs from the victim machine.
-
-**Screenshot:**
-- ![21-log-event-details.png](./screenshots/21-log-event-details.png)
-
----
-
-### 3.6 View Log Event Details
-
-- Inspected specific log events.
-
-**Screenshot:**
 - ![21-log-event-details.png](./screenshots/21-log-event-details.png)
 
 ---
