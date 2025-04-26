@@ -1,5 +1,4 @@
 # 📚 Phase 1: Setup and Initial Configuration
-
 ---
 
 ## 🛠️ Environment Setup
