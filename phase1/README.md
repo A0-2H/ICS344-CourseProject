@@ -65,7 +65,7 @@ nmap -sV 10.0.2.15
 - Discovered ProFTPD 1.3.5 on port 21
 
 **Screenshot:**
-- ![10-nmap_scan_results.png](./screenshots/10-nmap_scan_results.png)
+- ![10-nmap_scan_results.png](./screenshots/10-nmap-scan-results.png)
 
 ---
 
