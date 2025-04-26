@@ -24,7 +24,7 @@ search mod_copy
 
 ## Step 4: Select Exploit Module
 ```bash
-use exploit/unix/ftp/proftpd_modcopy_exec
+use 0
 ```
 ![13-select-mod_copy-exploit.png](../phase1/screenshots/13-select-mod_copy-exploit.png)
 
