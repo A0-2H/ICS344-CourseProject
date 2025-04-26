@@ -33,7 +33,6 @@
 ### 1.3 Obtain Victim IP Address
 
 - Victim (Metasploitable3) IP: `10.0.2.15`
-- Attacker (Kali) IP: `10.0.2.6`
 
 **Screenshots:**
 - ![7-ifconfig_command.png](./screenshots/7-ifconfig_command.png)
