@@ -25,21 +25,21 @@
 
 ```
 ICS344-CourseProject/
-├── phase1/
-│   ├── screenshots/
-│   ├── custom/
-│   │   ├── ExploitRoot.c
-│   │   ├── escalate.sh
-│   │   ├── lightpeas.sh
-│   │   └── README.md
-│   └── README.md
-├── phase2/
-│   ├── screenshots/
-│   └── README.md
-├── phase3/
-│   ├── screenshots/
-│   └── README.md
-└── README.md
+├── phase1/                        # Phase 1: Exploitation and Privilege Escalation
+│   ├── screenshots/               # Screenshots related to Phase 1 steps
+│   ├── custom/                    # Custom scripts used for enumeration and privilege escalation
+│   │   ├── ExploitRoot.c          # Custom C code for privilege escalation (PwnKit exploit)
+│   │   ├── escalate.sh            # Bash script to compile and run ExploitRoot.c automatically
+│   │   ├── lightpeas.sh           # Lightweight enumeration script (LightPeas equivalent)
+│   └── README.md                  # Full Phase 1 report and documentation
+├── phase2/                        # Phase 2: Splunk SIEM Setup and Log Forwarding
+│   ├── screenshots/               # Screenshots related to Phase 2 steps
+│   └── README.md                  # Full Phase 2 report and documentation
+├── phase3/                        # Phase 3: Defensive Security Implementation
+│   ├── screenshots/               # Screenshots related to Phase 3 steps
+│   └── README.md                  # Full Phase 3 report and documentation
+└── README.md                      # Root README
+
 ```
 
 ---
