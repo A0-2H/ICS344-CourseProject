@@ -3,7 +3,7 @@
 
 ---
 
-## 🛠️ Part A: Splunk SIEM Setup (Attacker Machine)
+## 🛠️ Part 1: Splunk SIEM Setup (Attacker Machine)
 
 ### 1.1 Download and Install Splunk
 
@@ -65,7 +65,7 @@ sudo /opt/splunk/bin/splunk enable boot-start
 
 ---
 
-## 🛠️ Part B: Splunk Forwarder Setup (Victim Machine)
+## 🛠️ Part 2: Splunk Forwarder Setup (Victim Machine)
 
 ### 2.1 Download and Install Splunk Universal Forwarder
 
@@ -115,7 +115,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 
 ---
 
-## 🔍 Part C: Visualize and Analyze Logs
+## 🔍 Part 3: Visualize and Analyze Logs
 
 ### 3.1 Access Search & Reporting
 
