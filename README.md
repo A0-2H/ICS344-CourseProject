@@ -27,7 +27,6 @@
 ICS344-CourseProject/
 ├── phase1/
 │   ├── screenshots/
-│   ├── smb_vuln_check.py
 │   ├── custom/
 │   │   ├── ExploitRoot.c
 │   │   ├── escalate.sh
