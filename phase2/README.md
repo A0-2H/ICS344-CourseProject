@@ -56,7 +56,7 @@ sudo /opt/splunk/bin/splunk enable boot-start
 - URL: `http://localhost:8000`
 - Login:
   - Username: admin
-  - Password: (created during first start)
+  - Password: splunk123
 
 **Screenshots:**
 - ![7-splunk-login-page.png](./screenshots/7-splunk-login-page.png)
