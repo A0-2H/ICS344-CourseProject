@@ -129,7 +129,7 @@ sudo /opt/splunkforwarder/bin/splunk add monitor /var/log/boot.log
 
 ### 3.2 Open Data Summary
 
-- Navigate to Data Summary → Hosts.
+- Navigate to Data Summary.
 
 **Screenshot:**
 - ![18-splunk-new-search-page.png](./screenshots/18-splunk-new-search-page.png)
