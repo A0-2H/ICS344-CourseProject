@@ -87,6 +87,7 @@ run
 ## Step 14: Confirm Shell Access
 ```bash
 whoami
+ls
 ```
 ![24-successful-reverse-shell-access.png](../phase1/screenshots/24-successful-reverse-shell-access.png)
 
